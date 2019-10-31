@@ -3,12 +3,11 @@ let currentResult = defaltResult;
 
 function add(a, b) {
   const result = a + b;
-  alert(`The result is ${result}`);
+  return result;
 }
 
-add(1, 2);
-
-currentResult = ((currentResult + 10) * 3) / 2 - 1;
+// currentResult = ((currentResult + 10) * 3) / 2 - 1;
+currentResult = add(1, 2);
 
 let calculationDescription = `(${defaltResult}  + 10) * 3 / 2 - 1`;
 
