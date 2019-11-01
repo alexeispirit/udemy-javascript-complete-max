@@ -1,10 +1,12 @@
 const defaltResult = 0;
 let currentResult = defaltResult;
 
+// get input from input field
 function getUserNumberInput() {
   return parseInt(userInput.value);
 }
 
+// generate and write calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription);
