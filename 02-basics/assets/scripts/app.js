@@ -1,4 +1,5 @@
 const defaltResult = 0;
+let logEntries = [];
 let currentResult = defaltResult;
 
 // get input from input field
@@ -16,7 +17,17 @@ function add() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
   currentResult += enteredNumber;
+
   createAndWriteOutput("+", initialResult, enteredNumber);
+
+  const logEntry = {
+    operation: "ADD",
+    prevResult: initialResult,
+    number: enteredNumber,
+    result: currentResult
+  };
+  logEntries.push(logEntry);
+  console.log(logEntries);
 }
 
 function subtract() {
