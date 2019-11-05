@@ -164,7 +164,7 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-  for (let item of battleLog) {
+  for (const item of battleLog) {
     console.log(item);
   }
 }
