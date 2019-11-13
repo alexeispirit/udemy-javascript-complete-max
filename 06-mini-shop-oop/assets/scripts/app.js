@@ -20,9 +20,11 @@ class ElementAttribute {
 }
 
 class Component {
-  constructor(renderHookId) {
+  constructor(renderHookId, shouldRender = true) {
     this.hookId = renderHookId;
-    this.render();
+    if (shouldRender) {
+      this.render();
+    }
   }
 
   render() {}
@@ -80,8 +82,9 @@ class ShoppingCart extends Component {
 
 class ProductItem extends Component {
   constructor(product, renderHookId) {
-    super(renderHookId);
+    super(renderHookId, false);
     this.product = product;
+    this.render();
   }
 
   addToCart() {
@@ -107,23 +110,33 @@ class ProductItem extends Component {
 }
 
 class ProductList extends Component {
-  products = [
-    new Product(
-      "Pillow",
-      "https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "Soft pillow",
-      19.99
-    ),
-    new Product(
-      "Sofa",
-      "https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "Pretty sofa",
-      189.99
-    )
-  ];
-
   constructor(renderHookId) {
     super(renderHookId);
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
+    this.products = [
+      new Product(
+        "Pillow",
+        "https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Soft pillow",
+        19.99
+      ),
+      new Product(
+        "Sofa",
+        "https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Pretty sofa",
+        189.99
+      )
+    ];
+    this.renderProducts();
+  }
+
+  renderProducts() {
+    for (const prod of this.products) {
+      new ProductItem(prod, "prod-list");
+    }
   }
 
   render() {
@@ -131,8 +144,8 @@ class ProductList extends Component {
       new ElementAttribute("id", "prod-list")
     ]);
 
-    for (const prod of this.products) {
-      new ProductItem(prod, "prod-list");
+    if (this.products && this.products.length > 0) {
+      this.renderProducts();
     }
   }
 }
