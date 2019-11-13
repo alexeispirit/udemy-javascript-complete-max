@@ -3,24 +3,29 @@ class Product {
   imageUrl;
   description;
   price;
+
+  constructor(title, image, desc, price) {
+    this.title = title;
+    this.imageUrl = image;
+    this.description = desc;
+    this.price = price;
+  }
 }
 
 const productList = {
   products: [
-    {
-      title: "Pillow",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      price: 19.99,
-      description: "Soft pillow"
-    },
-    {
-      title: "Carpet",
-      imageUrl:
-        "https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      price: 89.99,
-      description: "Pretty carpet"
-    }
+    new Product(
+      "Pillow",
+      "https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "Soft pillow",
+      19.99
+    ),
+    new Product(
+      "Sofa",
+      "https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "Pretty sofa",
+      189.99
+    )
   ],
   render() {
     const renderHook = document.getElementById("app");
