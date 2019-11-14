@@ -117,6 +117,8 @@ class ProductItem extends Component {
 }
 
 class ProductList extends Component {
+  products = [];
+
   constructor(renderHookId) {
     super(renderHookId);
     this.fetchProducts();
