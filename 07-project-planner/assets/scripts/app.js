@@ -174,7 +174,12 @@ class App {
       activeProjectsList.addProject.bind(activeProjectsList)
     );
 
-    this.startAnalytics();
+    const timerId = setTimeout(this.startAnalytics, 3000);
+    document
+      .getElementById("stop-analytics-btn")
+      .addEventListener("click", () => {
+        clearTimeout(timerId);
+      });
   }
 
   static startAnalytics() {
