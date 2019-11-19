@@ -1,6 +1,8 @@
+const timerValue = 2000;
+
 const intervalId = setInterval(() => {
   console.log("sending analytics...");
-}, 2000);
+}, timerValue);
 
 document.getElementById("stop-analytics-btn").addEventListener("click", () => {
   clearInterval(intervalId);
