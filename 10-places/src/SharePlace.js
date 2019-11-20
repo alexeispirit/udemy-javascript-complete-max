@@ -50,7 +50,20 @@ class PlaceFinder {
     );
   }
 
-  findAddressHandler() {}
+  findAddressHandler(event) {
+    event.preventDefault();
+    const address = event.target.querySelector("input").value;
+    if (!address || address.trim().length === 0) {
+      alert("Invalid address entered - please try again!");
+      return;
+    }
+
+    const modal = new Modal(
+      "loading-modal-content",
+      "Loading location - please wait"
+    );
+    modal.show();
+  }
 }
 
 new PlaceFinder();
